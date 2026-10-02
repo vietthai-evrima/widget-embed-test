@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbourline Research — Join a clinical study</title>
+<script src="https://widget.dev.evrilink.com.au/embed/v1/trials-widget.js" defer></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Demo landing page for testing the embeddable trial list widget.
+   Harbourline Research is a fictional organisation. Every class is prefixed
+   hl- so the page editor can merge this CSS without touching anything else.
+   Everything hangs off the .hl-page wrapper div, not <body>: page builders
+   replace the body element and drop its class. Colours are written out instead
+   of CSS variables because the builder drops shorthands (background, border)
+   that contain var(). */
+
+body { margin: 0; background: #F6F3EE; }
+
+.hl-page {
+  min-height: 100vh;
+  margin: 0;
+  color: #14232E;
+  background: #F6F3EE;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.hl-page *, .hl-page *::before, .hl-page *::after { box-sizing: border-box; }
+.hl-page img { max-width: 100%; display: block; }
+.hl-page a { color: inherit; }
+
+.hl-wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.hl-header { position: sticky; top: 0; z-index: 10; background: rgba(246, 243, 238, .92); backdrop-filter: blur(8px); border-bottom: 1px solid #E4DED4; }
+.hl-header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.hl-logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; text-decoration: none; }
+.hl-logo-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, #0E7C86 0%, #0A4F57 100%); position: relative; }
+.hl-logo-mark::after { content: ''; position: absolute; inset: 8px 8px auto auto; width: 8px; height: 8px; border-radius: 50%; background: #F2785C; }
+.hl-nav { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
+.hl-nav a { text-decoration: none; color: #586A74; }
+.hl-nav a:hover { color: #14232E; }
+
+/* Buttons */
+.hl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; }
+.hl-btn-primary { background: #0E7C86; color: #fff !important; box-shadow: 0 6px 18px -6px rgba(14, 124, 134, .6); }
+.hl-btn-primary:hover { background: #0A4F57; transform: translateY(-1px); }
+.hl-btn-ghost { background: transparent; color: #14232E; border-color: #E4DED4; }
+.hl-btn-ghost:hover { background: #FFFFFF; }
+.hl-btn:focus-visible, .hl-nav a:focus-visible, .hl-faq summary:focus-visible { outline: 3px solid #F2785C; outline-offset: 3px; }
+.hl-header .hl-btn { min-height: 40px; padding: 0 18px; font-size: 14px; }
+
+/* Hero */
+.hl-hero { padding: 72px 0 56px; position: relative; overflow: hidden; }
+.hl-hero::before { content: ''; position: absolute; width: 520px; height: 520px; right: -140px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(14, 124, 134, .14) 0%, rgba(14, 124, 134, 0) 70%); pointer-events: none; }
+.hl-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; position: relative; }
+.hl-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #0E7C86; }
+.hl-eyebrow::before { content: ''; width: 18px; height: 2px; background: #F2785C; border-radius: 2px; }
+.hl-h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(38px, 5vw, 60px); line-height: 1.05; letter-spacing: -.02em; margin: 18px 0 20px; }
+.hl-h1 em { font-style: italic; color: #0E7C86; }
+.hl-lead { font-size: 18px; color: #586A74; max-width: 34em; margin: 0 0 32px; }
+.hl-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hl-reassure { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 28px 0 0; padding: 0; list-style: none; font-size: 14px; color: #586A74; }
+.hl-reassure li { display: inline-flex; align-items: center; gap: 8px; }
+.hl-reassure li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: #E3F1F1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%230E7C86' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat; }
+
+.hl-hero-card { background: #FFFFFF; border: 1px solid #E4DED4; border-radius: 24px; padding: 28px; box-shadow: 0 30px 60px -30px rgba(20, 35, 46, .25); }
+.hl-hero-card h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 22px; margin: 0 0 6px; }
+.hl-hero-card p { margin: 0 0 20px; color: #586A74; font-size: 15px; }
+.hl-benefits { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.hl-benefits li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 14px; border-radius: 14px; background: #F6F3EE; }
+.hl-benefits strong { display: block; font-size: 15px; }
+.hl-benefits span { font-size: 14px; color: #586A74; }
+.hl-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: #E3F1F1; color: #0E7C86; font-weight: 700; font-size: 18px; }
+
+/* Sections */
+.hl-section { padding: 80px 0; }
+.hl-section-alt { background: #FFFFFF; border-top: 1px solid #E4DED4; border-bottom: 1px solid #E4DED4; }
+.hl-section-head { max-width: 640px; margin: 0 0 40px; }
+.hl-h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; letter-spacing: -.015em; margin: 14px 0 12px; }
+.hl-section-head p { margin: 0; color: #586A74; font-size: 17px; }
+
+/* Steps */
+.hl-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0; padding: 0; list-style: none; counter-reset: hl-step; }
+.hl-step { position: relative; padding: 28px; border-radius: 18px; background: #F6F3EE; border: 1px solid #E4DED4; counter-increment: hl-step; }
+.hl-step::before { content: counter(hl-step, decimal-leading-zero); display: block; font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 600; color: #0E7C86; margin-bottom: 14px; }
+.hl-step h3 { margin: 0 0 8px; font-size: 18px; }
+.hl-step p { margin: 0; color: #586A74; font-size: 15px; }
+
+/* Trials */
+.hl-trials { padding: 88px 0; }
+.hl-trials-panel { background: #FFFFFF; border: 1px solid #E4DED4; border-radius: 28px; padding: 40px; box-shadow: 0 30px 70px -45px rgba(20, 35, 46, .35); }
+.hl-trials-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: 28px; }
+.hl-trials-head .hl-section-head { margin: 0; }
+.hl-note { font-size: 14px; color: #586A74; max-width: 22em; }
+.hl-widget-slot { min-height: 240px; }
+
+/* Quote */
+.hl-quote { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; max-width: 860px; margin: 0 auto; }
+.hl-quote-mark { font-family: 'Fraunces', Georgia, serif; font-size: 96px; line-height: .8; color: #F2785C; }
+.hl-quote blockquote { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.35; }
+.hl-quote cite { display: block; margin-top: 16px; font-style: normal; font-size: 15px; color: #586A74; font-family: 'Inter', system-ui, sans-serif; }
+
+/* FAQ */
+.hl-faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+.hl-faq { border-top: 1px solid #E4DED4; }
+.hl-faq details { border-bottom: 1px solid #E4DED4; }
+.hl-faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 17px; }
+.hl-faq summary::-webkit-details-marker { display: none; }
+.hl-faq summary::after { content: '+'; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: #E3F1F1; color: #0E7C86; font-size: 20px; font-weight: 500; transition: transform .2s ease; }
+.hl-faq details[open] summary::after { transform: rotate(45deg); }
+.hl-faq p { margin: 0 0 20px; color: #586A74; max-width: 40em; }
+
+/* Contact band */
+.hl-band { background: linear-gradient(135deg, #0A4F57 0%, #0E7C86 100%); color: #fff; border-radius: 28px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.hl-band h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(26px, 3vw, 34px); margin: 0 0 6px; }
+.hl-band p { margin: 0; color: rgba(255, 255, 255, .82); }
+.hl-band .hl-btn { background: #fff; color: #0A4F57 !important; }
+.hl-band .hl-btn:hover { background: #F6F3EE; }
+
+/* Footer */
+.hl-footer { padding: 40px 0 56px; font-size: 14px; color: #586A74; }
+.hl-footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid #E4DED4; padding-top: 28px; }
+
+@media (max-width: 900px) {
+  .hl-hero-grid, .hl-faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hl-steps { grid-template-columns: 1fr; }
+  .hl-nav a:not(.hl-btn) { display: none; }
+}
+@media (max-width: 560px) {
+  .hl-wrap { padding: 0 16px; }
+  .hl-hero { padding: 48px 0 40px; }
+  .hl-section, .hl-trials { padding: 56px 0; }
+  .hl-trials-panel { padding: 22px 16px; border-radius: 20px; }
+  .hl-band { padding: 32px 22px; border-radius: 20px; }
+  .hl-quote { grid-template-columns: 1fr; gap: 8px; }
+  .hl-actions .hl-btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl-btn, .hl-faq summary::after { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="hl-page">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+
+<header class="hl-header">
+  <div class="hl-wrap hl-header-inner">
+    <a class="hl-logo" href="#top"><span class="hl-logo-mark" aria-hidden="true"></span>Harbourline Research</a>
+    <nav class="hl-nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#faq">Questions</a>
+      <a class="hl-btn hl-btn-primary" href="#studies">Find a study</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hl-hero">
+    <div class="hl-wrap hl-hero-grid">
+      <div>
+        <span class="hl-eyebrow">Clinical research volunteers</span>
+        <h1 class="hl-h1">Help shape the <em>next</em> generation of treatments.</h1>
+        <p class="hl-lead">We run clinical studies with local doctors and hospitals. Volunteers like you help us find out whether new treatments are safe and work well, with expert care at every visit.</p>
+        <div class="hl-actions">
+          <a class="hl-btn hl-btn-primary" href="#studies">See studies recruiting now</a>
+          <a class="hl-btn hl-btn-ghost" href="#how">How it works</a>
+        </div>
+        <ul class="hl-reassure">
+          <li>Free to take part</li>
+          <li>Leave at any time</li>
+          <li>Ethics approved</li>
+        </ul>
+      </div>
+      <aside class="hl-hero-card" aria-label="Why volunteers join">
+        <h2>Why people join</h2>
+        <p>Every study is different. Many offer:</p>
+        <ul class="hl-benefits">
+          <li><span class="hl-icon" aria-hidden="true">+</span><div><strong>Care from a study team</strong><span>Regular check-ups with doctors and nurses.</span></div></li>
+          <li><span class="hl-icon" aria-hidden="true">$</span><div><strong>Travel costs covered</strong><span>Reimbursement for study visits.</span></div></li>
+          <li><span class="hl-icon" aria-hidden="true">&#9733;</span><div><strong>Early access</strong><span>Treatments not yet widely available.</span></div></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="hl-section hl-section-alt" id="how">
+    <div class="hl-wrap">
+      <div class="hl-section-head">
+        <span class="hl-eyebrow">How it works</span>
+        <h2 class="hl-h2">Three steps from curious to confident.</h2>
+        <p>You are in control the whole way. Nothing starts until you have read the details and said yes.</p>
+      </div>
+      <ol class="hl-steps">
+        <li class="hl-step"><h3>Pick a study</h3><p>Browse the studies below and check the key eligibility for each one.</p></li>
+        <li class="hl-step"><h3>Answer a few questions</h3><p>A short online check tells us whether the study could suit you. It takes about five minutes.</p></li>
+        <li class="hl-step"><h3>Talk to the team</h3><p>A study coordinator calls you, explains everything and answers your questions before you decide.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="hl-trials" id="studies">
+    <div class="hl-wrap">
+      <div class="hl-trials-panel">
+        <div class="hl-trials-head">
+          <div class="hl-section-head">
+            <span class="hl-eyebrow">Recruiting now</span>
+            <h2 class="hl-h2">Find a study that fits you.</h2>
+            <p>Search by condition or filter by where you live.</p>
+          </div>
+          <p class="hl-note">New studies appear here as soon as they start recruiting.</p>
+        </div>
+        <div class="hl-widget-slot">
+          <evrilink-trials widget-id="wgt_5zfWna3Md2tw9W71"></evrilink-trials>
+          <script src="https://widget.dev.evrilink.com.au/embed/v1/trials-widget.js" defer></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section">
+    <div class="hl-wrap hl-quote">
+      <span class="hl-quote-mark" aria-hidden="true">&ldquo;</span>
+      <div>
+        <blockquote>The team explained every step and never rushed me. I felt looked after from the first phone call.</blockquote>
+        <cite>Study volunteer (sample quote for this demo page)</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section hl-section-alt" id="faq">
+    <div class="hl-wrap hl-faq-grid">
+      <div class="hl-section-head">
+        <span class="hl-eyebrow">Questions</span>
+        <h2 class="hl-h2">What to expect.</h2>
+        <p>Can't find your answer? Our study coordinators are happy to talk it through.</p>
+      </div>
+      <div class="hl-faq">
+        <details open>
+          <summary>Is taking part safe?</summary>
+          <p>Every study is reviewed and approved by an independent ethics committee before it starts. The study team monitors your health closely and will explain any known risks before you agree to take part.</p>
+        </details>
+        <details>
+          <summary>Does it cost anything?</summary>
+          <p>No. Study visits, tests and the study treatment are free. Many studies also reimburse travel and parking.</p>
+        </details>
+        <details>
+          <summary>Can I change my mind?</summary>
+          <p>Yes. You can leave a study at any time, for any reason, and it will not affect your usual care.</p>
+        </details>
+        <details>
+          <summary>What happens after I apply?</summary>
+          <p>A coordinator contacts you within a few working days to talk about the study and answer your questions. Applying does not commit you to anything.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section">
+    <div class="hl-wrap">
+      <div class="hl-band">
+        <div>
+          <h2>Ready to make a difference?</h2>
+          <p>Check which studies are open near you today.</p>
+        </div>
+        <a class="hl-btn" href="#studies">Browse studies</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="hl-footer">
+  <div class="hl-wrap hl-footer-inner">
+    <span>&copy; Harbourline Research. Fictional organisation, demo page for testing.</span>
+    <span>Taking part in research is voluntary.</span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
